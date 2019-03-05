@@ -1,0 +1,51 @@
+<html>
+<head>
+	<title> Word Game Demo</title>
+</head>
+<script type="text/javascript">
+	var thisGamePartOfSpeech = "adv";
+	
+	var wordBank = [
+		["run","verb"],
+		["computer","noun"],
+		["ugly","adj"],
+		["talk","verb"],
+		["quickly","adv"],
+		["she","noun"],
+		["look","verb"],
+		["tall","adj"],
+		["pretty","adj"],
+		["smart","adj"],
+		["slowly","adv"],
+		["surprisingly","adv"],
+	];
+	
+	function generateWord(){
+			document.getElementById("title").innerHTML = "Is your word a "+thisGamePartOfSpeech + "?";
+
+		
+		// pick a word+part of speech from wordbank at random
+		var randNum = Math.floor(Math.random()*wordBank.length);
+		console.log(randNum);
+		var thisWord = wordBank[randNum];
+		console.log(thisWord[1]);
+	
+		// indicate whether or not the word is the same part of speech as thisGamePartOfSpeech
+		var output = '';
+		if (thisWord[1] == thisGamePartOfSpeech){
+			output = "True";
+		} else {
+			output = "False";
+		}
+		// display the word in randomWordMarquee
+		document.getElementById("randomWordMarquee").innerHTML = thisWord[0]+" : "+output;
+	}
+	
+</script>
+<body>
+	<h1 id="title">Is your word a _____ ?</h1>
+	<button id="makeWord" onclick="generateWord()">Generate Random Word</button>
+	<br/>
+	<div id="randomWordMarquee">This is your random word</div>
+</body>
+</html>
